@@ -28,18 +28,20 @@ class DeleteUseCaseTest {
     DeleteUseCase deleteQuestionUseCase;
 
     @Test
-    void deleteUseCase(){
+    void deleteUseCase() {
 
         var questionDT0 = new QuestionDTO("1",
                 "xxxx",
                 "What is java?",
-                Type.OPEN, Category.SCIENCES);
+                Type.OPEN,
+                Category.SCIENCES, "Se envio el Email");
 
         var question = new Question("1",
                 "xxxx",
                 "What is java?",
                 Type.OPEN,
-                Category.SCIENCES);
+                Category.SCIENCES,
+                "Se envio el Email");
 
 
         Mockito.when(questionRepository.deleteById("xxxx")).thenReturn(Mono.empty());
@@ -48,7 +50,7 @@ class DeleteUseCaseTest {
         var result = deleteQuestionUseCase.apply("xxxx").block();
         Assertions.assertNull(result);
 
-        Mockito.verify(answerRepository,Mockito.times(1)).deleteByQuestionId("xxxx");
+        Mockito.verify(answerRepository, Mockito.times(1)).deleteByQuestionId("xxxx");
     }
 
 }

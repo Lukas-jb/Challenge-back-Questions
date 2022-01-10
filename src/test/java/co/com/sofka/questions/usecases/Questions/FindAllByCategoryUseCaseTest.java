@@ -26,7 +26,7 @@ class FindAllByCategoryUseCaseTest {
     FindAllByCategoryUseCase useCase;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         MapperUtils mapperUtils = new MapperUtils();
         repository = mock(QuestionRepository.class);
         useCase = new FindAllByCategoryUseCase(mapperUtils, repository);
@@ -39,7 +39,8 @@ class FindAllByCategoryUseCaseTest {
                 "xxxx",
                 "What is java?",
                 Type.OPEN,
-                Category.SCIENCES);
+                Category.SCIENCES,
+                "Se envio el Email");
 
         when(repository.findAllByCategory(question.getCategory().toString())).thenReturn(Flux.just(question));
 

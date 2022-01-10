@@ -35,7 +35,8 @@ class ListUseCaseTest {
                 "xxxx",
                 "What is java?",
                 Type.OPEN,
-                Category.SCIENCES);
+                Category.SCIENCES,
+                "Se envio el Email");
 
         when(repository.findAll()).thenReturn(Flux.just(question));
 

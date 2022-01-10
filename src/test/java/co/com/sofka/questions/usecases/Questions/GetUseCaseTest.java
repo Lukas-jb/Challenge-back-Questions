@@ -28,7 +28,8 @@ class GetUseCaseTest {
                 ,"1",
                 "¿What is java?",
                 Type.OPEN,
-                Category.TECHNOLOGY_AND_COMPUTER);
+                Category.TECHNOLOGY_AND_COMPUTER,
+                "Se envio el Email");
 
         var question= new Question();
         question.setId("1");

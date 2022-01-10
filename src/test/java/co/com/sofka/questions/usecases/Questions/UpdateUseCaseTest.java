@@ -33,13 +33,15 @@ class UpdateUseCaseTest {
                 "xxxx",
                 "What is java?",
                 Type.OPEN,
-                Category.SCIENCES);
+                Category.SCIENCES,
+                "Se envio el Email");
 
         var question = new Question("11",
                 "xxxx",
                 "What is java?",
                 Type.OPEN,
-                Category.SCIENCES);
+                Category.SCIENCES,
+                "Se envio el Email");
 
 
         when(repository.save(Mockito.any())).thenReturn(Mono.just(question));
@@ -48,7 +50,7 @@ class UpdateUseCaseTest {
 
         Assertions.assertEquals(Objects.requireNonNull(result.block()), "11");
 
-        Mockito.verify(repository,Mockito.times(1)).save(any());
+        Mockito.verify(repository, Mockito.times(1)).save(any());
 
     }
 
