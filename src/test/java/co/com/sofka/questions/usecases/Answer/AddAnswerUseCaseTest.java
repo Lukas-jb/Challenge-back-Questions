@@ -37,13 +37,14 @@ class AddAnswerUseCaseTest {
                 Type.OPEN,
                 Category.SCIENCES);
 
-        var answerDTO = new AnswerDTO("1",
+        var answerDTO = new AnswerDTO("11",
+                "11",
                 "xxxx",
                 "Es un lenguaje de programación y otras palabras");
 
         var answer = new Answer("11",
                 "xxxx",
-                "1",
+                "11",
                 "Es un lenguaje de programación y otras palabras", 1);
 
         when(answerRepository.save(any())).thenReturn(Mono.just(answer));
@@ -53,11 +54,11 @@ class AddAnswerUseCaseTest {
         var resultQuestionDTO = questionDTO.block();
 
         assert resultQuestionDTO != null;
-        Assertions.assertEquals(resultQuestionDTO.getId(),question.getId());
-        Assertions.assertEquals(resultQuestionDTO.getQuestion(),question.getQuestion());
-        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getQuestionId(),answerDTO.getQuestionId());
-        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getAnswer(),answerDTO.getAnswer());
+        Assertions.assertEquals(resultQuestionDTO.getId(), question.getId());
+        Assertions.assertEquals(resultQuestionDTO.getQuestion(), question.getQuestion());
+        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getQuestionId(), answerDTO.getQuestionId());
+        Assertions.assertEquals(resultQuestionDTO.getAnswers().get(0).getAnswer(), answerDTO.getAnswer());
 
-        Mockito.verify(answerRepository,Mockito.times(1)).save(any());
+        Mockito.verify(answerRepository, Mockito.times(1)).save(any());
     }
 }
