@@ -2,7 +2,6 @@ package co.com.sofka.questions.routers.Usuario;
 
 import co.com.sofka.questions.model.UsuarioDTO;
 import co.com.sofka.questions.usecases.Usuario.ActualizarUsuarioUseCase;
-import co.com.sofka.questions.usecases.Usuario.CreateUsuarioUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -12,8 +11,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
-import static org.springframework.web.reactive.function.server.RequestPredicates.accept;
+import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
@@ -27,7 +25,7 @@ public class ActualizarUsuarioRouter {
                         .bodyValue(result));
 
         return route(
-                POST("/actualizarUsuario").and(accept(MediaType.APPLICATION_JSON)),
+                PUT("/actualizarUsuario").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(UsuarioDTO.class)
                         .flatMap(executor)
         );
